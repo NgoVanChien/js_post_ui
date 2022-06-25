@@ -1,7 +1,4 @@
-import axiosClient from './api/axiosClient'
 import postApi from './api/postApi'
-
-console.log('Hello from main.js')
 
 async function main() {
   //   const reponse = await axiosClient.get('/posts')
@@ -11,9 +8,12 @@ async function main() {
       _page: 1,
       _limit: 5,
     }
-    const reponse = await postApi.getAll(queryParams)
-    console.log(reponse)
-  } catch (error) {}
+    const data = await postApi.getAll(queryParams)
+    console.log('main.js data', data)
+  } catch (error) {
+    console.log('get all failed', error)
+    // show modal, toast errors
+  }
 
   await postApi.updateFormData({
     id: 'sktwi1cgkkuif36dj',
